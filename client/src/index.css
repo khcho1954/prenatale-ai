@@ -1,0 +1,537 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Font Families */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Open Sans', sans-serif;
+  --font-korean: 'Noto Sans KR', sans-serif;
+
+  /* Primary Colors */
+  --background: 40 10% 95.7%;        /* #F9F7F4 - 크림 화이트 */
+  --foreground: 0 0% 29%;            /* #4A4A4A - 다크 그레이 */
+
+  /* Brand Colors */
+  --primary: 260 35% 63%;            /* #8E7CC3 - 라벤더 퍼플 */
+  --primary-foreground: 0 0% 100%;   /* #FFFFFF - 화이트 */
+  --secondary: 177 48% 58%;          /* #5CBDB9 - 민트 그린 */
+  --secondary-foreground: 0 0% 100%;
+  --accent: 14 100% 82%;             /* #FFB6A3 - 코랄 핑크 */
+  --accent-foreground: 0 0% 29%;
+  --success: 148 43% 63%;            /* #7CC39F - 소프트 그린 */
+  --alert: 45 65% 68%;               /* #E6C074 - 골든 옐로우 */
+
+  /* Neutral Colors */
+  --muted: 36 11% 90%;               /* #E8E6E1 - 라이트 그레이 */
+  --muted-foreground: 0 0% 45%;      /* #737373 - 미디엄 그레이 */
+  --border: 36 11% 90%;              /* #E8E6E1 - 보더 그레이 */
+  --card: 0 0% 100%;                 /* #FFFFFF - 화이트 */
+  --card-foreground: 0 0% 29%;       /* #4A4A4A - 다크 그레이 */
+  
+  /* Additional UI Colors */
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 29%;
+  --input: 36 11% 90%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 100%;
+  --ring: 260 35% 63%;
+  --radius: 0.75rem;
+  
+  /* Custom colors for the fairy tale app */
+  --cream: hsl(40, 10%, 95.7%);
+  --lavender: hsl(260, 35%, 63%);
+  --lavender-light: hsl(260, 30%, 90%);
+  --mint: hsl(177, 48%, 58%);
+  --coral: hsl(14, 100%, 82%);
+  --soft-green: hsl(148, 43%, 63%);
+  --golden-yellow: hsl(45, 65%, 68%);
+  --text-gray: hsl(0, 0%, 29%);
+  --light-gray: hsl(36, 11%, 90%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(260, 35%, 63%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  html {
+    font-family: var(--font-body);
+  }
+
+  body {
+    @apply antialiased;
+    background-color: var(--cream);
+    color: var(--text-gray);
+    font-family: var(--font-body);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+  
+  [lang="ko"], .lang-korean {
+    font-family: var(--font-korean);
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+  
+  .font-body {
+    font-family: var(--font-body);
+  }
+  
+  .font-korean {
+    font-family: var(--font-korean);
+  }
+  
+  .text-gray-custom {
+    color: hsl(var(--foreground));
+  }
+  
+  .text-muted-custom {
+    color: hsl(var(--muted-foreground));
+  }
+  
+  .bg-cream {
+    background-color: hsl(var(--background));
+  }
+  
+  .text-lavender {
+    color: hsl(var(--primary));
+  }
+  
+  .bg-lavender {
+    background-color: hsl(var(--primary));
+  }
+  
+  .bg-lavender-light {
+    background-color: hsl(var(--secondary));
+  }
+  
+  .border-muted-custom {
+    border-color: hsl(var(--border));
+  }
+  
+  /* Heart icon styles for favorites */
+  .heart-filled {
+    color: hsl(var(--primary));
+    fill: hsl(var(--primary));
+  }
+  
+  .heart-empty {
+    color: hsl(var(--muted-foreground));
+    fill: none;
+    stroke: hsl(var(--muted-foreground));
+    stroke-width: 2;
+  }
+  
+  /* Mobile-first container - 모든 페이지에서 사용하는 핵심 레이아웃 */
+  .container-mobile {
+    width: 100%;
+    max-width: 430px;
+    margin: 0 auto;
+    padding: 0 20px;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* 모바일 헤더 표준 스타일 */
+  .mobile-header {
+    padding: 12px 0;
+    background-color: hsl(var(--background));
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid hsl(var(--border));
+  }
+
+  /* 모바일 메인 콘텐츠 영역 */
+  .mobile-main {
+    padding-bottom: 80px; /* 하단 네비게이션 공간 확보 */
+    padding-top: 16px;
+  }
+
+  /* 모바일 카드 스타일 */
+  .mobile-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid hsl(var(--border));
+  }
+
+  /* 모바일 섹션 타이틀 */
+  .mobile-section-title {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 600;
+    color: hsl(var(--foreground));
+    margin-bottom: 12px;
+  }
+
+  /* 모바일 프로필 이미지 */
+  .mobile-profile-image {
+    width: 64px;
+    height: 64px;
+  }
+  
+  /* Dialog overlay with better visibility */
+  [data-radix-dialog-overlay] {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(2px);
+  }
+  
+  /* Alternative dialog overlay selectors */
+  .fixed.inset-0.z-50.bg-black,
+  .fixed.inset-0.z-50.bg-background {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(2px);
+  }
+  
+  /* Dialog content with better contrast */
+  [data-radix-dialog-content] {
+    background-color: white !important;
+    border: 1px solid #e5e7eb !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+  }
+  
+  /* 모바일 프로필 이미지 완료 */
+  .mobile-profile-image {
+    border-radius: 50%;
+    background-color: hsl(var(--primary) / 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: hsl(var(--primary));
+  }
+
+  /* 모바일 버튼 스타일 */
+  .mobile-button-primary {
+    background-color: hsl(var(--primary));
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .mobile-button-primary:hover {
+    background-color: hsl(var(--primary) / 0.9);
+  }
+
+  .mobile-button-secondary {
+    background-color: transparent;
+    color: hsl(var(--primary));
+    border: 1px solid hsl(var(--primary));
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .mobile-button-secondary:hover {
+    background-color: hsl(var(--primary) / 0.05);
+  }
+
+  /* 모바일 입력 필드 */
+  .mobile-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid hsl(var(--border));
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: white;
+    color: hsl(var(--foreground));
+    transition: border-color 0.2s ease;
+  }
+
+  .mobile-input:focus {
+    outline: none;
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 0 2px hsl(var(--primary) / 0.1);
+  }
+
+  /* 모바일 텍스트 스타일 */
+  .mobile-text-primary {
+    color: hsl(var(--foreground));
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .mobile-text-secondary {
+    color: hsl(var(--muted-foreground));
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .mobile-text-small {
+    color: hsl(var(--muted-foreground));
+    font-size: 12px;
+    line-height: 1.3;
+  }
+
+  /* 모바일 아이콘 표준 크기 */
+  .mobile-icon-sm {
+    width: 16px;
+    height: 16px;
+  }
+
+  .mobile-icon-md {
+    width: 20px;
+    height: 20px;
+  }
+
+  .mobile-icon-lg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* 모바일 스페이싱 */
+  .mobile-spacing-xs { margin-bottom: 8px; }
+  .mobile-spacing-sm { margin-bottom: 12px; }
+  .mobile-spacing-md { margin-bottom: 16px; }
+  .mobile-spacing-lg { margin-bottom: 24px; }
+  .mobile-spacing-xl { margin-bottom: 32px; }
+
+  /* 모바일 플렉스 유틸리티 */
+  .mobile-flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .mobile-flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mobile-flex-start {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+/* 모바일 터치 최적화 */
+@media (max-width: 768px) {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  button, [role="button"] {
+    touch-action: manipulation;
+  }
+  
+  /* 모바일에서 더 큰 터치 영역 */
+  .mobile-touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* 태블릿 대응 */
+@media (min-width: 431px) and (max-width: 768px) {
+  .container-mobile {
+    max-width: 430px;
+  }
+}
+
+/* 커스텀 스크롤바 */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 2px;
+}
+
+/* 스와이프 컨테이너 */
+.swipe-container {
+  touch-action: pan-y;
+}
+
+.swipe-slide {
+  transition: transform 0.3s ease-out;
+}
+
+/* Story card mobile optimizations */
+.story-card {
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.story-card:active {
+  transform: scale(0.98);
+}
+
+/* Swipe navigation buttons */
+.swipe-container {
+  position: relative;
+}
+
+.swipe-container button {
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.swipe-container button:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* Weekly calendar mobile styling */
+.weekly-calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.weekly-calendar-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 4px;
+}
+
+.weekly-calendar-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* Recently read mobile styling */
+.recently-read-item {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background: white;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.recently-read-thumbnail {
+  width: 60px;
+  height: 48px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-right: 12px;
+}
+
+.recently-read-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.recently-read-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-gray);
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.recently-read-summary {
+  font-size: 12px;
+  color: var(--muted-foreground);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.recently-read-tags {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.recently-read-tag {
+  padding: 2px 8px;
+  background: var(--lavender-light);
+  color: var(--lavender);
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+/* Bottom navigation mobile */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  background: white;
+  border-top: 1px solid #e5e7eb;
+  padding: 12px 0 max(12px, env(safe-area-inset-bottom));
+  z-index: 50;
+}
+
+/* Heart icon styles */
+.heart-filled {
+  fill: hsl(var(--primary));
+  color: hsl(var(--primary));
+}
+
+.heart-empty {
+  fill: none;
+  color: #9CA3AF;
+}
